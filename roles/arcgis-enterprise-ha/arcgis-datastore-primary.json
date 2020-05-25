@@ -1,0 +1,41 @@
+{
+    "arcgis": {
+        "version": "10.8",
+        "run_as_msa": true,
+        "hosts": {}, // What do we put here?
+        
+        "portal": {
+            "hostname": "",
+            "domain_name": "",
+            "wa_url": "",
+            "url": "",
+            "private_url": "",
+            "web_context_url": "", //DEFAULT: https://<Domain name>/<WA name>
+            
+            "admin_username": "admin",
+            "admin_password": "changeit",
+
+            "setup": "\\\\gisx\\Infra\\10.8\\Setups\\DataStore\\Setup.exe",
+            "install_dir": "D:\\ProgramFiles\\ArcGIS\\DataStore",
+            "install_system_requirements": true,
+            
+            "data_dir": "\\\\gisx\\ArcGISDataStore\\",
+            "log_dir": "\\\\gisx\\ArcGISDataStore\\Logs",
+            "backup_dir": "\\\\gisx\\ArcGISDataStore\\Backup",
+
+            "relational": {"backup_type": "fs"},
+            "tilecache": {"backup_type": "fs"},
+          
+            "types": "tileCache,relational",
+
+            "autorization_file": "\\\\gisx\\Infra\\AuthorizationFiles\\data_store.json",
+            "autorization_file_version": "10.8" // Should this be 10.4 like the default?
+            
+            // Do we need keystore and cert parameters?
+        }
+    },
+    "run_list": [
+        "recipe[arcgis-enterprise::system]",
+        "recipe[arcgis-enterprise::data_store]"
+    ]
+}

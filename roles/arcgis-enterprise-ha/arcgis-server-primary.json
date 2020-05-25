@@ -1,0 +1,49 @@
+{
+    "arcgis": {
+        "run_as_msa": true,
+        "hosts": {}, // What do we put here? work on windows? Hostname to IP address mappings to be added to /etc/hosts
+        "server": {
+            "domain_name": "",
+            "wa_url": "",
+            "hostname": "",
+            "url": "",
+            "private_url": "",
+            "web_context_url": "",
+            
+            "admin_username": "admin",
+            "admin_password": "changeit",
+
+            "setup": "\\\\gisx\\Infra\\10.8\\Setups\\Server\\Setup.exe",
+            "install_dir": "D:\\ProgramFiles\\ArcGIS\\Server",
+            "install_system_requirements": true,
+
+            "is_hosting": true, // what this affect before federation?
+
+            "managed_database": "", // do with that, or will this be set by datastore?
+            "replicated_database": "", // do with that, or will this be set by datastore?
+
+            "directories_root": "\\\\gisx\\ArcGISServer\\Directories",
+            "log_dir": "\\\\gisx\\ArcGISServer\\Logs",
+            "config-store": "\\\\gisx\\ArcGISServer\\ConfigStore",
+
+            "autorization_file": "\\\\gisx\\Infra\\AuthorizationFiles\\server.json",
+            "autorization_file_version": "10.8", // Should this be 10.4 like the default?
+            "cert_alias": ""
+
+            "keystore_file": "\\\\gisx\\Infra\\gis-all.example.com.pfx",
+            "keystore_password": "",
+            "hsts_enabled": true,
+            // doesn't have root cert? allssl?
+
+            // security - should we specify AD or let federation do that?
+
+            "virtual_dirs_security_enabled": false, // what is this?
+
+            "system_properties": {}
+        }
+    },
+    "run_list": [
+        "recipe[arcgis-enterprise::system]",
+        "recipe[arcgis-enterprise::server]"
+    ]
+}

@@ -1,0 +1,62 @@
+{
+    "arcgis": {
+        "version": "10.8",
+        "run_as_msa": true,
+        "hosts": {}, // What do we put here?
+
+        "portal": {
+            "hostname": "",
+            "url": "",
+            "primary_machine_url": "",
+            
+            "admin_username": "admin",
+            "admin_password": "changeit",
+
+            "setup": "\\\\gisx\\Infra\\10.8\\Setups\\Portal\\Setup.exe",
+            "install_dir": "D:\\ProgramFiles\\ArcGIS\\Portal",
+            "install_system_requirements": true,
+
+            "data_dir": "D:\\ArcGISData",
+
+            "authorization_file": "\\\\gisx\\Infra\\AuthorizationFiles\\portal.json",
+            "authorization_file_version": "10.8",
+            "user_license_type_id": "creatorUT",
+            
+            // Do we need keystore+certs like in primary? those args are not used by recipe.
+            "keystore_file": "\\\\gisx\\Infra\\gis-all.example.com.pfx",
+            "keystore_password": "",
+            "cert_alias": "", // SSL certificate alias for Portal for ArcGIS. Default alias is composed of these values:`node['arcgis']['portal']['domain_name']`
+
+            "upgrade_backup": false, // Backup Portal for ArcGIS content during upgrade... false i guess?
+            "upgrade_rollback": true,
+
+            // Do we need to have this section on secondary portal too?
+            "security": {
+                "user_store_config": {
+                    "type": "WINDOWS",
+                    "properties": {
+                        "adminUser": "MYDOMAIN\\winaccount",
+                        "adminUserPassword": "secret"
+                    }
+                },
+                "role_store_config": {
+                    "type": "WINDOWS",
+                    "properties": {
+                        "adminUser": "MYDOMAIN\\winaccount",
+                        "adminUserPassword": "secret"
+                    }
+                }
+            },
+
+            "webstyles": {
+                "setup": "\\\\gisx\\Infra\\10.8\\Setups\\ArcGISWebStyles\\Setup.exe"
+            }
+        }
+    },
+    "run_list": [
+        "recipe[arcgis-enterprise::system]",
+        "recipe[arcgis-enterprise::portal_standby]",
+        "recipe[arcgis-enterprise::portal_security]",
+        "recipe[arcgis-enterprise::webstyles]"
+    ]
+}

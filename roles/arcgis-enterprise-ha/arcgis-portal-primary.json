@@ -1,0 +1,74 @@
+{
+    "arcgis": {
+        "version": "10.8",
+        "run_as_msa": true,
+        "hosts": {}, // What do we put here?
+        
+        "portal": {
+            "hostname": "",
+            "domain_name": "",
+            "wa_url": "",
+            "url": "",
+            "private_url": "",
+            "web_context_url": "", //DEFAULT: https://<Domain name>/<WA name>
+            
+            "admin_username": "admin",
+            "admin_password": "changeit",
+            "admin_email":"admin@domain.com",
+            "admin_full_name": "Org Manager",
+            "admin_description": "ArcGIS System Manngers",
+            "security_question": "",
+            "security_answer": "",
+
+            "setup": "\\\\gisx\\Infra\\10.8\\Setups\\Portal\\Setup.exe",
+            "install_dir": "D:\\ProgramFiles\\ArcGIS\\Portal",
+            "install_system_requirements": true,
+            
+            "data_dir": "D:\\ArcGISPortal",
+            "content_dir": "\\\\gisx\\ArcGISPortal\\Content",
+            "log_dir": "\\\\gisx\\ArcGISPortal\\Logs",
+
+            "autorization_file": "\\\\gisx\\Infra\\AuthorizationFiles\\portal.json",
+            "autorization_file_version": "10.8", // Should this be 10.4 like the default?
+            "user_license_type_id": "creatorUT",
+            
+            "keystore_file": "\\\\gisx\\Infra\\gis-all.example.com.pfx",
+            "keystore_password": "",
+            "cert_alias": "", // SSL certificate alias for Portal for ArcGIS. Default alias is composed of these values:`node['arcgis']['portal']['domain_name']`
+            "root_cert": "", // needed in our case? this is a file (?) how do we add intermidiate?
+            "root_cert_alias": "",
+            "allssl": true, // ?
+
+            "upgrade_backup": false, // Backup Portal for ArcGIS content during upgrade... false i guess?
+            "upgrade_rollback": true,
+
+            "security": {
+                "properties": {},
+                "user_store_config": {
+                    "type": "WINDOWS",
+                    "properties": {
+                        "adminUser": "MYDOMAIN\\winaccount",
+                        "adminUserPassword": "secret"
+                    }
+                },
+                "role_store_config": {
+                    "type": "WINDOWS",
+                    "properties": {
+                        "adminUser": "MYDOMAIN\\winaccount",
+                        "adminUserPassword": "secret"
+                    }
+                }
+            },
+
+            "webstyles": {
+                "setup": "\\\\gisx\\Infra\\10.8\\Setups\\ArcGISWebStyles\\Setup.exe"
+            }            
+        }
+    },
+    "run_list": [
+        "recipe[arcgis-enterprise::system]",
+        "recipe[arcgis-enterprise::portal]",
+        "recipe[arcgis-enterprise::portal_security]",
+        "recipe[arcgis-enterprise::webstyles]"
+    ]
+}

@@ -1,0 +1,32 @@
+{
+    "arcgis": {
+        "iis": {
+            "keystore_file": "\\\\gisx\\Infra\\gis-all.example.com.pfx"
+        },
+        "web_adaptor": {
+            "setup": "\\\\gisx\\Infra\\10.8\\Setups\\WebAdaptorIIS\\Setup.exe",
+            "install_dir": "D:\\ProgramFiles\\ArcGIS\\WebAdaptor",
+            "install_system_requirements": true,
+            "admin_access": true
+        },
+        "portal": {
+            "wa_name": "portal",
+            "wa_url": "",
+            "url": "",
+            "admin_username": "admin",
+            "admin_password": "changeit"
+        },
+        "server": {
+            "wa_name": "server",
+            "wa_url": "",
+            "url": "",
+            "admin_username": "admin",
+            "admin_password": "changeit"
+        }
+    },
+    "run_list": [
+        "recipe[esri-iis]",
+        "recipe[arcgis-enterprise::portal_wa]",
+        "recipe[arcgis-enterprise::server_wa]"
+    ]
+}
