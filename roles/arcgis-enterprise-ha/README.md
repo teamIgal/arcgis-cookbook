@@ -8,7 +8,7 @@
 - [x] ArcGIS Server Primary
 - [x] ArcGIS Server Secondary
 - [x] ArcGIS DateStore Primary
-- [ ] ArcGIS DateStore Secondary
+- [x] ArcGIS DateStore Secondary
 - [x] ArcGIS WebAdaptor Primary
 - [x] ArcGIS WebAdaptor Secondary
 - [ ] ArcGIS ImageHosting Primary
@@ -17,5 +17,5 @@
 - [ ] ArcGIS ImageAnalysis Secondary
 - [ ] ArcGIS EGDB (SDE) Primary
 - [ ] ArcGIS EGDB (SDE) Secondary
-- [ ] ArcGIS Federation
+- [x] ArcGIS Federation
 - [ ] ArcGIS FileServer - do not need - we use ISCSI.

@@ -1,0 +1,38 @@
+{
+    "arcgis": {
+      "version": "10.7",
+      "server": {
+        "private_url": "https://domain.com:6443/arcgis",
+        "admin_username": "admin",
+        "admin_password": "changeit"
+      },
+      "python": {
+        "runtime_environment": "C:\\Python27\\ArcGISx6410.7"
+      },
+      "misc": {
+        "scripts_dir": "C:\\chef\\misc_scripts"
+      },
+      "egdb": {
+        "engine": "sqlserver-se",
+        "keycodes": "\\\\gisx\\Infra\\AuthorizationFiles\\keycodes",
+        
+        "endpoint": "",
+        "master_username": "EsriRDSAdmin", // can we use a weaker login? what permissions does it need?
+        "master_password": "changeit",
+
+        "db_username": "sde",
+        "db_password": "changeit",
+        "connection_files_dir": "C:\\chef\\misc_scripts\\connection_files",
+        "data_items": [{
+          "database": "egdb",
+          "data_item_path": "/enterpriseDatabases/registeredDatabase",
+          "connection_file": "C:\\chef\\msic_scripts\\connection_files\\RDS_egdb.sde",
+          "is_managed": true,
+          "connection_type": "shared"
+        }]
+      }
+    },
+    "run_list": [
+      "recipe[arcgis-egdb]"
+    ]
+  }

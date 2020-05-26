@@ -2,6 +2,7 @@
     "arcgis": {
         "run_as_msa": true,
         "hosts": {}, // What do we put here? work on windows? Hostname to IP address mappings to be added to /etc/hosts
+        
         "server": {
             "domain_name": "",
             "wa_url": "",

@@ -4,17 +4,14 @@
         "run_as_msa": true,
         "hosts": {}, // What do we put here?
         
-        "portal": {
-            "hostname": "",
-            "domain_name": "",
-            "wa_url": "",
-            "url": "",
-            "private_url": "",
-            "web_context_url": "", //DEFAULT: https://<Domain name>/<WA name>
-            
+        "server": {
             "admin_username": "admin",
             "admin_password": "changeit",
+            "domain_name": "",
+            "url": ""
+        },
 
+        "data_store": {
             "setup": "\\\\gisx\\Infra\\10.8\\Setups\\DataStore\\Setup.exe",
             "install_dir": "D:\\ProgramFiles\\ArcGIS\\DataStore",
             "install_system_requirements": true,
@@ -36,6 +33,6 @@
     },
     "run_list": [
         "recipe[arcgis-enterprise::system]",
-        "recipe[arcgis-enterprise::data_store]"
+        "recipe[arcgis-enterprise::datastore]"
     ]
 }

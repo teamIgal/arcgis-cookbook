@@ -1,0 +1,22 @@
+{
+    "arcgis": {
+      "server": {
+        "domain_name": "",
+        "private_url": "",
+        "web_context_url": "",
+        "admin_username": "admin",
+        "admin_password": "changeit",
+        "is_hosting": false // should this be false to to imagehosting server?
+      },
+      "portal": {
+        "domain_name": "",
+        "wa_url": "",
+        "admin_username": "admin",
+        "admin_password": "changeit"
+      }
+      // do we need to add a segment for other components?
+    },
+    "run_list": [
+      "recipe[arcgis-enterprise::federation]"
+    ]
+  }
